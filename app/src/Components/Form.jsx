@@ -2,17 +2,26 @@ import { useEffect, useState } from "react";
 
 function Form({ addTweet }) {
   const [tweet, setTweet] = useState("");
-  const [isSubmit, setIsSubmit] = useState(true);
+  const [isSubmit, setIsSubmit] = useState({ error: "", bool: true });
+
   useEffect(() => {
-    if (tweet.length) {
-      setIsSubmit(false);
+    if (tweet.length > 0 && tweet.length <= 140) {
+      setIsSubmit({ error: "", bool: false });
+    } else if (tweet.length > 140) {
+      setIsSubmit({ error: "Only 140 characters allowed", bool: true });
+    } else {
+      setIsSubmit({ error: "", bool: true });
     }
   }, [tweet]);
 
-  function handleFormSumbit(e) {
+  function handleFormSubmit(e) {
     e.preventDefault();
-    addTweet(tweet);
+    if (!isSubmit.bool) {
+      addTweet(tweet);
+      setTweet("");
+    }
   }
+
   return (
     <>
       <div className="container">
@@ -20,7 +29,7 @@ function Form({ addTweet }) {
           <div className="title">
             <span>Add Tweet</span>
           </div>
-          <form onSubmit={handleFormSumbit}>
+          <form onSubmit={handleFormSubmit}>
             <div className="row">
               <input
                 type="text"
@@ -29,8 +38,13 @@ function Form({ addTweet }) {
                 onChange={(e) => setTweet(e.target.value)}
               />
             </div>
+            <div className="error">{isSubmit.error}</div>
             <div className="form-add">
-              <button className="submit-btn" type="submit" disabled={isSubmit}>
+              <button
+                className="submit-btn"
+                type="submit"
+                disabled={isSubmit.bool}
+              >
                 Add
               </button>
             </div>

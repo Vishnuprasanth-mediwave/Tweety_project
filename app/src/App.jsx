@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import Nav from "./Components/Nav";
+import Home from "./Components/Home";
 import "./App.css";
 
 function App() {
   return (
     <>
-      <Nav />
+      <Home />
     </>
   );
 }

@@ -1,10 +1,10 @@
-body {
+/* body {
   font-family: sans-serif;
 }
 
 h1 {
   text-align: center;
-  color: white;
+  color: #00a793;
 }
 .tweet-list {
   color: #00a793;
@@ -15,12 +15,21 @@ h1 {
   align-items: center;
   justify-content: space-around;
   flex-direction: row-reverse;
-  background: #00a793;
+  border-bottom: 1px solid #00a793;
+  box-shadow: 0 3px 5px grey;
+  background: white;
 }
 .link {
   display: flex;
   align-items: center;
   justify-content: end;
+}
+.link button {
+  border: 0;
+  outline: none;
+  font-size: 18px;
+  color: #00a793;
+  background-color: white;
 }
 a {
   text-decoration: none;
@@ -51,14 +60,13 @@ a {
 .tweet-container {
   padding: 110px;
   margin-top: 50px;
-  /* background-color: rgba(247, 247, 249, 1); */
   border-radius: 20px;
   background: url(https://www.mediwavedigital.com/_next/static/media/oruworks.e62439ad.svg);
   background-repeat: no-repeat;
   background-position: left 110px top 72px;
   position: absolute;
   top: 100px;
-}
+} 
 .tweet-records {
   display: flex;
   flex-wrap: wrap;
@@ -67,13 +75,13 @@ a {
   border-left: 14px solid #e50064;
 }
 .card {
-  /* padding: 15px; */
+  padding: 15px;
   margin: 25px;
   border-radius: 10px;
   background: white;
   width: 300px !important;
   border-left: 14px solid #00a793;
-  /* background-color: rgba(247, 247, 249, 1); */
+  background-color: rgba(247, 247, 249, 1);
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
     0 4px 6px -4px rgba(0, 0, 0, 0.1);
 }
@@ -89,14 +97,17 @@ a {
   align-items: center;
   border-top: 1px solid #00a793;
 }
-.emoji span {
-  display: inline-block;
+.emoji button {
+  border: 0;
+  background-color: #fff;
 }
-.like {
+.emoji .like {
   border: 1px solid #00a793;
-  border-radius: 5px;
-  padding: 2px;
 }
+.emoji .unlike {
+  border: 1px solid red;
+}
+
 .date {
   font-size: 12px;
 }
@@ -166,6 +177,12 @@ form .row input::placeholder {
   padding: 10px 24px;
   border-radius: 5px;
 }
+.submit-btn:disabled {
+  filter: grayscale(100%);
+}
+.error {
+  color: red;
+}
 @media only screen and (max-width: 992px) {
   .tweet-records {
     display: block;
@@ -208,3 +225,4 @@ form .row input::placeholder {
     margin-top: 12px;
   }
 }
+*/
