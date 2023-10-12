@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 
-function Form({ addTweet }) {
+function CustomForm({ addTweet }) {
   const [tweet, setTweet] = useState("");
   const [isSubmit, setIsSubmit] = useState({ error: "", bool: true });
 
@@ -13,8 +13,8 @@ function Form({ addTweet }) {
       setIsSubmit({ error: "", bool: true });
     }
   }, [tweet]);
-
-  function handleFormSubmit(e) {
+  /// form submit function
+  function handleFormSumbit(e) {
     e.preventDefault();
     if (!isSubmit.bool) {
       addTweet(tweet);
@@ -29,16 +29,24 @@ function Form({ addTweet }) {
           <div className="title">
             <span>Add Tweet</span>
           </div>
-          <form onSubmit={handleFormSubmit}>
+          <form onSubmit={handleFormSumbit}>
             <div className="row">
               <input
                 type="text"
-                placeholder="Enter the tweet here"
+                placeholder="Enter the tweet here ...."
                 required
                 onChange={(e) => setTweet(e.target.value)}
               />
             </div>
             <div className="error">{isSubmit.error}</div>
+            <div className="note">
+              <h4>
+                NOTE-
+                <span className="note-para">
+                  Please enter character upto 140 only
+                </span>
+              </h4>
+            </div>
             <div className="form-add">
               <button
                 className="submit-btn"
@@ -50,16 +58,8 @@ function Form({ addTweet }) {
             </div>
           </form>
         </div>
-        <div>
-          <button className="back">
-            <a href="" className="back-btn">
-              back
-            </a>
-          </button>
-        </div>
       </div>
     </>
   );
 }
-
-export default Form;
+export default CustomForm;
